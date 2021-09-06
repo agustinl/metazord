@@ -1,10 +1,9 @@
-- SEO information
-- Design
-- Launch upcoming
-- Footer [x]
-- Colors
-- Sacar url and urltoshow
-- metazord.io domain register
+### To-Do checklist
 
-
-Get a complete information and preview of your site meta tags 
+- [ ] SEO information
+- [ ] Design
+- [ ] Producthunt launch upcoming
+- [x] Footer
+- [ ] Colors Settings
+- [ ] Remove url and urlToShow from props
+- [ ] metazord.io domain register
