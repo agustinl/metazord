@@ -1,16 +1,134 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#card {
+	/* backdrop-filter: saturate(180%) blur(5px);
+    background: rgb(204 204 204 / 40%);
+    background: linear-gradient(309deg, rgb(204 204 204 / 90%) 0%, rgb(250 250 250 / 90%) 100%);
+    box-shadow: 0 0 20px rgba(0,0,0,0.09); */
+	/* border-radius: 10px; */
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* .facebook-card {
+    background:#3a3b3c;
 }
 
-* {
-  box-sizing: border-box;
+.facebook-card > a,
+.facebook-card > p {
+    color:#b0b3b8;
+}
+
+.facebook-card h3 {
+    color:#e4e6eb;
+} */
+
+.facebook-card {
+	background: #f0f2f5;
+	border: solid 1px #ced0d4;
+}
+
+.facebook-card > div {
+	border-color: #ced0d4;
+}
+
+.facebook-card a,
+.facebook-card p {
+	color: #65676b;
+}
+
+.facebook-card h3 {
+	color: #050505;
+}
+
+.facebook-card > div:first-child {
+	background: #fff;
+}
+
+.twitter-card {
+	background: #fff;
+	border: solid 1px #cfd9de;
+}
+
+.twitter-card > div {
+	border-color: #cfd9de;
+}
+
+.twitter-card a,
+.twitter-card p {
+	color: #536471;
+}
+
+.twitter-card h3 {
+	color: #0f1419;
+}
+
+.twitter-card > div:first-child {
+	background: #f7f9f9;
+}
+
+.twitter-card:hover {
+	background: #efefef;
+}
+
+.linkedin-card {
+	background: #eef3f8;
+	border: solid 1px #ebebeb;
+}
+
+.linkedin-card > div:first-child {
+	background: #fff;
+}
+
+.twitter-card h3,
+.facebook-card p,
+.google-card h3,
+.facebook-card h3 {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.google-card p,
+.twitter-card p {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+/* .twitter-card {
+    background:#000;
+}
+
+.twitter-card div *,
+.twitter-card > p {
+    color:#6e767d;
+}
+
+.twitter-card h3 {
+    color:#FFF;
+} */
+
+details {
+	user-select: none;
+}
+details summary svg {
+	transform: rotate(90deg);
+}
+
+details[open] summary svg {
+	transform: rotate(-90deg);
+}
+
+details[open] summary ~ * {
+	animation: ease-opacity-t-b 0.5s ease;
+}
+
+summary {
+	cursor: pointer;
+}
+
+svg {
+	transition: all 0.3s;
 }
