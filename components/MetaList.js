@@ -18,21 +18,28 @@ const MetaList = ({ data }) => {
 
 			<ul className="mt-4">
 				{Object.entries(data).map(([key, value]) => (
-					<li key={key} className="flex items-center flex-wrap mb-1">
-						{value == undefined ? <XCircle /> : <Check />}
-						<h4 className="text-tiny font-medium mx-1">{key}:</h4>
+					<li key={key} className="flex items-center pb-2 mb-2 border-b border-gray-100">
+						<div className="w-auto">
+							{value == undefined ? <XCircle /> : <Check />}
+						</div>
+						
+						<div className="w-3/12">
+							<h4 className="text-tiny font-medium mx-1">{key}</h4>
+						</div>
 
-						{key == "favicon" && value != undefined ? (
-							<img
-								src={value}
-								alt="Favicon"
-								className="max-h-5"
-							/>
-						) : (
-							<p className="text-tiny text-gray-800">
-								{value == undefined ? "-" : value}
-							</p>
-						)}
+						<div className="w-9/12">
+							{key == "favicon" && value != undefined ? (
+								<img
+									src={value}
+									alt="Favicon"
+									className="max-h-5"
+								/>
+							) : (
+								<p className="text-tiny text-gray-600">
+									{value == undefined ? "-" : value}
+								</p>
+							)}
+						</div>
 
 						{/* { key == "twitter_site" || key == "twitter_creator" ? (
 							<p className="text-tiny text-gray-800">

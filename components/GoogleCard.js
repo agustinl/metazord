@@ -19,22 +19,22 @@ const GoogleCard = ({ data }) => {
 				<div className="w-full google-card">
 					<a
 						href={data.url}
+						target="_blank"
+						rel="noreferrer"
 						className="text-tiny text-gray-800">
 						{`https://${data.urlToShow}`}
 					</a>
 					<h3 className="text-xl hover:underline">
 						<a
 							href={data.url}
+							target="_blank"
+							rel="noreferrer"
 							className="text-blue-900">
-							{ data.og_title ? (
-								data.og_title
-							) : data.title }
+							{ data.title }
 						</a>
 					</h3>
 					<p className="text-tiny text-gray-800">
-						{ data.description ? (
-							data.description
-						) : data.og_description }
+						{ data.description }
 					</p>
 				</div>
 			</div>

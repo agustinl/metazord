@@ -1,9 +1,9 @@
 ### To-Do checklist
 
-- [ ] SEO information
+- [x] SEO information
 - [ ] Design
 - [ ] Producthunt launch upcoming
 - [x] Footer
 - [ ] Colors Settings
-- [ ] Remove url and urlToShow from props
+- [x] Remove url and urlToShow from props
 - [ ] metazord.io domain register

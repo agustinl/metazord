@@ -17,10 +17,10 @@ const LinkedIn = ({ data }) => {
 				</div>
 
 				<a href={data.url} className="w-full rounded-lg linkedin-card">
-					{data.og_image ? (
+					{data.image ? (
 						<div className="h-72 w-full rounded-t-lg">
 							<img
-								src={data.og_image}
+								src={data.image}
 								alt={data.title}
 								className="object-cover rounded-t-lg h-72 w-full"
 							/>
@@ -53,12 +53,13 @@ const LinkedIn = ({ data }) => {
 					)}
 					<div className="rounded-b-lg px-3 py-2 border-t">
 						<h3 className="text-tiny font-medium mb-2">
-							{data.og_title}
+							{data.title}
 						</h3>
 						<div className="flex items-center text-xs text-gray-500">                            
 						    <p>{data.urlToShow}</p>
                             <p className="ml-1">• X min to read</p>
                         </div>
+						{/* <p className="text-xs text-gray-500">{data.description}</p> */}
 					</div>
 				</a>
 			</div>

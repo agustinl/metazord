@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Head from "next/head";
+
 const cheerio = require("cheerio");
 const axios = require("axios");
 
@@ -9,14 +11,13 @@ import MetaList from "../components/MetaList";
 import TwitterCard from "../components/TwitterCard";
 import Skeleton from "../components/Skeleton";
 import Error from "../components/Error";
-
-import Head from "next/head";
-import Slack from "../components/Slack";
+import SlackCard from "../components/SlackCard";
 import Footer from "../components/Footer";
 
 export default function Home() {
 	const [url, setUrl] = useState("https://kiff.app/");
 	const [data, setData] = useState({});
+	const [metaList, setMetaList] = useState({});
 	const [error, setError] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -35,20 +36,30 @@ export default function Home() {
 		}
 	};
 
+	const handleLogoClick = () => {
+		setError(false);
+		setIsLoading(true);
+		setData({});
+		setUrl("https://metazord.io");
+	};
+
 	useEffect(() => {
 		const fetchData = async (url) => {
 			const response = await axios
 				.get(url)
 				.then(function (response) {
-					// handle success
 					const body = response.data;
 					const $ = cheerio.load(body);
 
-					var image =
+					var tmp_image =
 						$('meta[property="og:image"]').attr("content") ||
 						$('meta[property="og:image:url"]').attr("content");
 
-					var favicon =
+					var tmp_twitter_image =
+						$('meta[name="twitter:image"]').attr("content") ||
+						$('meta[name="twitter:image:src"]').attr("content");
+
+					var tmp_favicon =
 						$('link[type="image/png"]').attr("href") ||
 						$('link[rel="icon"]').attr("href") ||
 						$('link[rel="shortcut icon"]').attr("href") ||
@@ -58,69 +69,85 @@ export default function Home() {
 						.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "")
 						.split("/")[0];
 
-					if (image) {
-						image = image.includes("://")
-							? image
-							: "//" + urlToShow + image;
+					if (tmp_image) {
+						tmp_image = isValidUrl(tmp_image)
+							? tmp_image
+							: "//" + urlToShow + tmp_image;
 					}
 
-					if (favicon) {
-						favicon = favicon.includes("https")
+					if (tmp_favicon) {
+						/* favicon = favicon.includes("https")
 							? favicon
-							: "//" + urlToShow + favicon;
+							: "//" + urlToShow + favicon; */
+						tmp_favicon = isValidUrl(tmp_favicon)
+							? tmp_favicon
+							: "//" + urlToShow + tmp_favicon;
 					}
 
-					const metadata = {
-						title:
-							$("title").text() ||
-							$('meta[name="title"]').attr("content"),
-						description: $('meta[name="description"]').attr(
-							"content"
-						),
-						og_title: $('meta[property="og:title"]').attr(
-							"content"
-						),
-						og_description: $(
-							'meta[property="og:description"]'
-						).attr("content"),
-						og_image: image,
-						og_url: $('meta[property="og:url"]').attr("content"),
-						og_site_name: $('meta[property="og:site_name"]').attr(
-							"content"
-						),
-						favicon: favicon,
-						twitter_title: $('meta[name="twitter:title"]').attr(
-							"content"
-						),
-						twitter_description: $(
-							'meta[name="twitter:description"]'
-						).attr("content"),
-						twitter_site: $('meta[name="twitter:site"]').attr(
-							"content"
-						),
-						twitter_creator: $('meta[name="twitter:creator"]').attr(
-							"content"
-						),
-						twitter_card: $('meta[name="twitter:card"]').attr(
-							"content"
-						),
-						twitter_image:
-							$('meta[name="twitter:image"]').attr("content") ||
-							$('meta[name="twitter:image:src"]').attr(
-								"content"
-							) ||
-							image,
-						url: url,
-						urlToShow: urlToShow,
-					};
+					if (tmp_twitter_image) {
+						tmp_twitter_image = isValidUrl(tmp_twitter_image)
+							? tmp_twitter_image
+							: "//" + urlToShow + tmp_twitter_image;
+					}
 
-					setData(metadata);
+					const title = $("title").text() || $('meta[name="title"]').attr("content");
+					const description = $('meta[name="description"]').attr("content");
+					const canonical = $('meta[rel="canonical"]').attr("href");
+					const og_title = $('meta[property="og:title"]').attr("content");
+					const og_description = $('meta[property="og:description"]').attr("content");
+					const og_image = tmp_image;
+					const og_url = $('meta[property="og:url"]').attr("content");
+					const og_site_name = $('meta[property="og:site_name"]').attr("content");
+					const og_type = $('meta[property="og:type"]').attr("content");
+					const favicon = tmp_favicon;
+					const twitter_title = $('meta[name="twitter:title"]').attr("content");
+					const twitter_description = $('meta[name="twitter:description"]').attr("content");
+					const twitter_site = $('meta[name="twitter:site"]').attr("content");
+					const twitter_creator = $('meta[name="twitter:creator"]').attr("content");
+					const twitter_card = $('meta[name="twitter:card"]').attr("content");
+					const twitter_image = tmp_twitter_image;
+
+					const meta_list = {
+						'title': title,
+						'description': description,
+						'og:title': og_title,
+						'og:description': og_description,
+						'og:image': og_image,
+						'og:url': og_url,
+						'og:site_name': og_site_name,
+						'og:type': og_type,
+						'favicon': favicon,
+						'canonical': canonical,
+						'twitter:title': twitter_title,
+						'twitter:description': twitter_description,
+						'twitter:site': twitter_site,
+						'twitter:creator': twitter_creator,
+						'twitter:card': twitter_card,
+						'twitter:image': twitter_image
+					}
+
+					const meta_data = {
+						title: og_title || title,
+						description: og_description || description,
+						image: og_image,
+						og_url: og_url,
+						og_site_name: og_site_name,
+						favicon: favicon,
+						twitter_title: twitter_title || og_title || title,
+						twitter_description: twitter_description || og_description || description,
+						twitter_image: twitter_image,
+						url: canonical ? canonical : url,
+						urlToShow: urlToShow,
+					}
+
+					setData(meta_data);
+					setMetaList(meta_list);
 					setIsLoading(false);
 				})
 				.catch(function (error) {
 					setError(true);
 					setIsLoading(false);
-					console.log(error.message);
+					console.log(error);
 				});
 			/* .then(function () {
 					console.log("ok");
@@ -129,6 +156,16 @@ export default function Home() {
 
 		fetchData(url);
 	}, [url]);
+
+	const isValidUrl = (pathImage) => {
+		let url_string;
+		try {
+			url_string = new URL(pathImage);
+		} catch (_) {
+			return false;
+		}
+		return url_string.href;
+	};
 
 	return (
 		<>
@@ -213,22 +250,25 @@ export default function Home() {
 					<img
 						src="logo.svg"
 						alt="Metazord.io"
-						className="h-8 ml-5"
+						className="h-8 ml-5 cursor-pointer"
+						onClick={(e) => handleLogoClick()}
 					/>
 					<h1 className="sr-only">metazord.io</h1>
 				</div>
 
 				<div className="relative mx-auto flex items-center justify-center w-5/12">
 					<input
+						placeholder="metazord.io"
 						className={`${
 							error
 								? "border-red-400 hover:border-red-400"
 								: "border-gray-300  hover:border-gray-400"
 						} border-2 rounded-lg h-10 pl-2 text-base w-full focus:outline-none`}
 						onKeyPress={(e) => handleEnter(e)}
+						defaultValue={url}
 					/>
 					<span className="absolute bg-gray-900 px-2 py-1 rounded-md right-2 text-xs font-normal text-gray-50">
-						Press <b>Enter</b> to find metas
+						Press <b>Enter</b> to find tags
 					</span>
 				</div>
 
@@ -244,7 +284,7 @@ export default function Home() {
 
 						{Object.keys(data).length > 0 ? (
 							<>
-								<MetaList data={data} />
+								<MetaList data={metaList} />
 
 								<GoogleCard data={data} />
 
@@ -254,11 +294,10 @@ export default function Home() {
 
 								<LinkedIn data={data} />
 
-								<Slack data={data} />
+								<SlackCard data={data} />
 
 								<p className="text-xs text-gray-400 my-3">
-									Card`s may be different, representation is
-									based on each web documentation.
+									Card`s may be different. Representation is based on an approximation of each web documentation.
 								</p>
 							</>
 						) : null}
@@ -266,53 +305,128 @@ export default function Home() {
 				</section>
 
 				<section className="w-8/12 py-6 px-1 my-10">
-					<h4 className="text-xl font-medium">Why meta tags?</h4>
-					<p className="text-sm text-gray-500 mt-2 mb-5">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Ab ipsa magnam molestias aliquid deserunt enim quaerat
-						nobis doloribus suscipit laudantium nesciunt, vitae iure
-						tenetur nemo similique fuga sunt, eos nam.
-					</p>
+					<h4 className="text-xl font-medium">Why use meta tags?</h4>
+					<blockquote
+						className="text-sm text-gray-500 mt-2 mb-5"
+						cite="https://developers.google.com/search/docs/advanced/crawling/special-tags">
+						<p className="pl-2 border-l-2">
+							Page-level meta tags are a great way for website
+							owners to provide search engines with information
+							about their sites. Meta tags can be used to provide
+							information to all sorts of clients, and each system
+							processes only the meta tags they understand and
+							ignores the rest.
+						</p>
+						<p className="text-xs text-gray-500 font-medium mt-2 mb-3 text-right">
+							from{" "}
+							<a
+								href="https://developers.google.com/search/docs/advanced/crawling/special-tags"
+								target="_blank"
+								rel="noreferrer"
+								className="underline">
+								developers.google.com
+							</a>
+						</p>
+					</blockquote>
 
 					<h4 className="text-xl font-medium">
 						What is Open Graph protocol?
 					</h4>
-					<p className="text-sm text-gray-500 mt-2 mb-3">
-						&quot;The Open Graph protocol enables any web page to
-						become a rich object in a social graph. For instance,
-						this is used on Facebook to allow any web page to have
-						the same functionality as any other object on
-						Facebook.&quot;
-					</p>
-					<p className="text-xs text-gray-500 font-medium mt-2 mb-3">
-						from{" "}
-						<a
-							href="https://ogp.me/"
-							target="_blank"
-							rel="noreferrer"
-							className="underline">
-							https://ogp.me/
-						</a>
-					</p>
+					<blockquote
+						className="text-sm text-gray-500 mt-2 mb-5"
+						cite="https://ogp.me/">
+						<p className="pl-2 border-l-2">
+							The Open Graph protocol enables any web page to
+							become a rich object in a social graph. For
+							instance, this is used on Facebook to allow any web
+							page to have the same functionality as any other
+							object on Facebook.
+						</p>
+						<p className="text-xs text-gray-500 font-medium mt-2 mb-3 text-right">
+							from{" "}
+							<a
+								href="https://ogp.me/"
+								target="_blank"
+								rel="noreferrer"
+								className="underline">
+								ogp.me
+							</a>
+						</p>
+					</blockquote>
 
 					<h4 className="text-xl font-medium">Documentation</h4>
-					<p className="text-sm text-gray-500 mt-2 mb-3">
-						&quot;The Open Graph protocol enables any web page to
-						become a rich object in a social graph. For instance,
-						this is used on Facebook to allow any web page to have
-						the same functionality as any other object on
-						Facebook.&quot;
-					</p>
-					<p className="text-xs text-gray-500 font-medium mt-2 mb-3">
-						from{" "}
-						<a
-							href="https://ogp.me/"
-							target="_blank"
-							rel="noreferrer"
-							className="underline">
-							https://ogp.me/
-						</a>
-					</p>
+					<ul className="mt-2 mb-3">
+						<li>
+							<p className="text-sm text-gray-500 mt-2 mb-3">
+								<a href="https://www.linkedin.com/help/linkedin/answer/46687/making-your-website-shareable-on-linkedin"
+								target="_blank"
+								rel="noreferrer"
+								className="underline">
+									Making Your Website Shareable on LinkedIn
+								</a> &#8212; LinkedIn
+							</p>
+						</li>
+						<li>
+							<p className="text-sm text-gray-500 mt-2 mb-3">
+								<a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards"
+								target="_blank"
+								rel="noreferrer"
+								className="underline">
+									About Twitter Cards
+								</a> &#8212; Twitter
+							</p>
+						</li>
+						<li>
+							<p className="text-sm text-gray-500 mt-2 mb-3">
+								<a href="https://developers.facebook.com/docs/sharing/webmasters/"
+								target="_blank"
+								rel="noreferrer"
+								className="underline">
+									A Guide to Sharing for Webmasters
+								</a> &#8212; Facebook
+							</p>
+						</li>
+						<li>
+							<p className="text-sm text-gray-500 mt-2 mb-3">
+								<a href="https://developers.facebook.com/docs/sharing/best-practices/"
+								target="_blank"
+								rel="noreferrer"
+								className="underline">
+									Best Practices - Sharing
+								</a> &#8212; Facebook
+							</p>
+						</li>
+						<li>
+							<p className="text-sm text-gray-500 mt-2 mb-3">
+								<a href="https://developers.google.com/search/blog/2021/08/update-to-generating-page-titles"
+								target="_blank"
+								rel="noreferrer"
+								className="underline">
+									An update to how we generate web page titles 
+								</a> &#8212; Google
+							</p>
+						</li>
+						<li>
+							<p className="text-sm text-gray-500 mt-2 mb-3">
+								<a href="https://developers.facebook.com/tools/debug/"
+								target="_blank"
+								rel="noreferrer"
+								className="underline">
+									Sharing Debugger
+								</a> &#8212; Facebook
+							</p>
+						</li>
+						<li>
+							<p className="text-sm text-gray-500 mt-2 mb-3">
+								<a href="https://cards-dev.twitter.com/validator"
+								target="_blank"
+								rel="noreferrer"
+								className="underline">
+									Card Validator
+								</a> &#8212; Twitter
+							</p>
+						</li>
+					</ul>
 				</section>
 			</main>
 

@@ -7,8 +7,9 @@ const Footer = () => {
 				<h1 className="sr-only">metazord.io</h1>
 			</div>
 
-            <div className="w-4/12 flex items-center justify-center text-tiny text-gray-400 text-center">
-                <p>made by <a href="https://www.agustinl.com" target="_blank" rel="noreferrer">@agustinl</a> | <a href="!#" target="_blank" rel="noreferrer">GitHub</a> | {new Date().getFullYear()}</p>
+            <div className="w-4/12 flex flex-col text-tiny text-gray-400 text-center">
+                <p>made by <a href="https://www.agustinl.com" target="_blank" rel="noreferrer">@agustinl</a> {/* | <a href="!#" target="_blank" rel="noreferrer">GitHub</a> */}</p>
+                <p><small>{new Date().getFullYear()}</small></p>
             </div>
 
             <div className="w-4/12 text-tiny text-gray-400 text-right">

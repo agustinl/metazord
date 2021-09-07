@@ -16,11 +16,11 @@ const TwitterCard = ({ data }) => {
 					/>
 				</div>
 
-				<a href={data.url} className="w-full rounded-full twitter-card">
-					{data.twitter_image ? (
+				<a href={data.url} target="_blank" rel="noreferrer" className="w-full rounded-full twitter-card">
+					{data.twitter_image || data.image ? (
 						<div className="h-72 w-full rounded-t-full">
 							<img
-								src={data.twitter_image}
+								src={data.twitter_image || data.image}
 								alt={data.title}
 								className="object-cover rounded-t-full h-72 w-full"
 							/>
@@ -52,10 +52,8 @@ const TwitterCard = ({ data }) => {
 					)}
 
 					<div className="rounded-b-lg border-t p-3 w-full text-sm">
-						<h3 className="mt-1">{data.twitter_title ? data.twitter_title : data.og_title}</h3>
-						{data.twitter_description ? (
-							<p className="my-1 leading-5">{data.twitter_description}</p>
-						) : <p className="my-1 leading-5">{data.og_description}</p>}
+						<h3 className="mt-1">{data.twitter_title || data.title}</h3>
+						<p className="my-1 leading-5">{data.twitter_description || data.description}</p>
 						<div className="flex items-center">
 							<svg
 								height="21"
@@ -81,12 +79,13 @@ const TwitterCard = ({ data }) => {
 
 			<a
 				href={data.url}
+				target="_blank" rel="noreferrer" 
 				className="flex items-center w-full mt-3 rounded-full twitter-card">
 				<div className="rounded-l-full h-auto w-1/4 flex items-center">
-					{data.twitter_image ? (
+					{data.twitter_image || data.image ? (
 						<div className="h-32 w-full rounded-l-full">
 							<img
-								src={data.twitter_image}
+								src={data.twitter_image || data.image}
 								alt={data.title}
 								className="object-cover rounded-l-full h-32 w-full"
 							/>
@@ -115,10 +114,8 @@ const TwitterCard = ({ data }) => {
 				</div>
 
 				<div className="flex justify-center flex-col rounded-r-full border-l h-32 px-4 w-3/4 text-sm">
-					<h3 className="mt-1">{data.twitter_title ? data.twitter_title : data.og_title}</h3>
-						{data.twitter_description ? (
-							<p className="my-1 leading-5">{data.twitter_description}</p>
-						) : <p className="my-1 leading-5">{data.og_description}</p>}
+					<h3 className="mt-1">{data.twitter_title || data.title}</h3>
+					<p className="my-1 leading-5">{data.twitter_description || data.description}</p>
 					<div className="flex items-center">
 						<svg
 							height="21"

@@ -16,11 +16,11 @@ const FacebookCard = ({ data }) => {
 					/>
 				</div>
 
-				<a href={data.url} className="w-full rounded-lg facebook-card">
-					{data.og_image ? (
+				<a href={data.url} target="_blank" rel="noreferrer" className="w-full rounded-lg facebook-card">
+					{data.image || data.twitter_image ? (
 						<div className="h-72 w-full rounded-t-lg">
 							<img
-								src={data.og_image}
+								src={data.image || data.twitter_image}
 								alt={data.title}
 								className="object-cover rounded-t-lg h-72 w-full"
 							/>
@@ -54,22 +54,21 @@ const FacebookCard = ({ data }) => {
 					<div className="rounded-b-lg pt-2 pb-3 px-4 border-t">
 						<p className="uppercase text-xs">{data.urlToShow}</p>
 						<h3 className="text-lg font-medium -mb-1">
-							{data.og_title}
+							{data.title}
 						</h3>
-						{data.og_description ? (
-							<p className="text-base">{data.og_description}</p>
-						) : null}
+						<p className="text-base">{data.description}</p>
 					</div>
 				</a>
 			</div>
 
 			<a
 				href={data.url}
+				target="_blank" rel="noreferrer"
 				className="flex items-center mt-3 rounded-lg facebook-card">
-				{data.og_image ? (
+				{data.image || data.twitter_image ? (
 					<div className="h-36 w-2/5 rounded-l-lg">
 						<img
-							src={data.og_image}
+							src={data.image || data.twitter_image}
 							alt={data.title}
 							className="object-cover rounded-l-lg h-36 w-full"
 						/>
@@ -100,13 +99,9 @@ const FacebookCard = ({ data }) => {
 				<div className="flex justify-center flex-col h-36 rounded-r-lg px-4 w-3/5 border-l">
 					<p className="uppercase text-xs">{data.urlToShow}</p>
 					<h3 className="font-medium text-sm mt-1 leading-5">
-						{data.og_title}
+						{data.title}
 					</h3>
-					{data.og_description ? (
-						<p className="text-sm leading-5">
-							{data.og_description}
-						</p>
-					) : null}
+					<p className="text-sm leading-5">{data.description}</p>
 				</div>
 			</a>
 		</Card>

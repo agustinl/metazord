@@ -83,7 +83,8 @@
 .twitter-card h3,
 .facebook-card p,
 .google-card h3,
-.facebook-card h3 {
+.facebook-card h3,
+.linkedin-card p {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -131,4 +132,8 @@ summary {
 
 svg {
 	transition: all 0.3s;
+}
+
+details ul li:last-child {
+    border:none;
 }

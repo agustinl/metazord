@@ -31,22 +31,20 @@ const Slack = ({ data }) => {
 					<h3 className="text-sm font-semibold">
 						<a
 							href={data.url}
+                            target="_blank"
+                            rel="noreferrer" 
 							className="text-blue-900">
-							{ data.og_title ? (
-								data.og_title
-							) : data.title }
+							{ data.title }
 						</a>
 					</h3>
 					<p className="text-tiny text-gray-900 mt-1 mb-2">
-						{ data.description ? (
-							data.description
-						) : data.og_description }
+						{ data.description }
 					</p>
                     <div>
-                        {data.og_image ? (
+                        {data.image ? (
                             <div className="h-56">
                                 <img
-                                    src={data.og_image}
+                                    src={data.image}
                                     alt={data.title}
                                     className="object-cover rounded-md h-56 border border-gray-200"
                                 />
