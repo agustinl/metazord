@@ -3,33 +3,27 @@ import Card from "./Card";
 const FacebookCard = ({ data }) => {
 	return (
 		<Card>
-			<div className="flex flex-col items-start">
-				<div className="flex items-center w-full p-1 block rounded-md mb-2">
-					<img src="https://img.icons8.com/fluency/28/000000/facebook-new.png" alt="Facebook" />
+			<div>
+				<div className="card-header">
+					<img src="https://img.icons8.com/fluency/28/000000/facebook-new.png" alt="Facebook Logo" />
 
-					<h2 className="text-lg font-medium mx-3 mr-4">
-						Facebook
-					</h2>
+					<h2>Facebook</h2>
 
-					<hr
-						className="flex-grow"
-					/>
+					<hr />
 				</div>
 
-				<a href={data.url} target="_blank" rel="noreferrer" className="w-full rounded-lg facebook-card">
+				<a href={data.url} target="_blank" rel="noreferrer" className="facebook-card facebook-large-card">
 					{data.image || data.twitter_image ? (
-						<div className="h-72 w-full rounded-t-lg">
+						<div>
 							<img
 								src={data.image || data.twitter_image}
-								alt={data.title}
-								className="object-cover rounded-t-lg h-72 w-full"
+								alt="Site Image Preview"
 							/>
 						</div>
 					) : (
-						<div className="py-10 rounded-t-lg w-full">
+						<div className="no-image">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								className="w-full"
 								width="28"
 								height="28"
 								viewBox="0 0 24 24"
@@ -51,12 +45,10 @@ const FacebookCard = ({ data }) => {
 							</svg>
 						</div>
 					)}
-					<div className="rounded-b-lg pt-2 pb-3 px-4 border-t">
-						<p className="uppercase text-xs">{data.urlToShow}</p>
-						<h3 className="text-lg font-medium -mb-1">
-							{data.title}
-						</h3>
-						<p className="text-base">{data.description}</p>
+					<div className="facebook-card-info">
+						<p>{data.urlToShow}</p>
+						<h3>{data.title}</h3>
+						<p>{data.description}</p>
 					</div>
 				</a>
 			</div>
@@ -64,20 +56,18 @@ const FacebookCard = ({ data }) => {
 			<a
 				href={data.url}
 				target="_blank" rel="noreferrer"
-				className="flex items-center mt-3 rounded-lg facebook-card">
+				className="facebook-card facebook-short-card">
 				{data.image || data.twitter_image ? (
-					<div className="h-36 w-2/5 rounded-l-lg">
+					<div>
 						<img
 							src={data.image || data.twitter_image}
-							alt={data.title}
-							className="object-cover rounded-l-lg h-36 w-full"
+							alt="Site Image Preview"
 						/>
 					</div>
 				) : (
-					<div className="rounded-l-lg h-36 flex items-center w-2/5">
+					<div className="no-image">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							className="w-full"
 							width="28"
 							height="28"
 							viewBox="0 0 24 24"
@@ -96,12 +86,10 @@ const FacebookCard = ({ data }) => {
 					</div>
 				)}
 
-				<div className="flex justify-center flex-col h-36 rounded-r-lg px-4 w-3/5 border-l">
-					<p className="uppercase text-xs">{data.urlToShow}</p>
-					<h3 className="font-medium text-sm mt-1 leading-5">
-						{data.title}
-					</h3>
-					<p className="text-sm leading-5">{data.description}</p>
+				<div className="facebook-card-info">
+					<p>{data.urlToShow}</p>
+					<h3>{data.title}</h3>
+					<p>{data.description}</p>
 				</div>
 			</a>
 		</Card>

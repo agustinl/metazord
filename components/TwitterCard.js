@@ -3,33 +3,27 @@ import Card from "./Card";
 const TwitterCard = ({ data }) => {
 	return (
 		<Card>
-			<div className="flex flex-col items-start">
-				<div className="flex items-center w-full p-1 block rounded-md mb-2">
-					<img src="https://img.icons8.com/color/28/000000/twitter--v1.png" alt="Twitter" />
+			<div>
+				<div className="card-header">
+					<img src="https://img.icons8.com/color/28/000000/twitter--v1.png" alt="Twitter Logo" />
 					
-					<h2 className="text-lg font-medium mx-3 mr-4">
-						Twitter
-					</h2>
+					<h2>Twitter</h2>
 
-					<hr
-						className="flex-grow"
-					/>
+					<hr />
 				</div>
 
-				<a href={data.url} target="_blank" rel="noreferrer" className="w-full rounded-full twitter-card">
+				<a href={data.url} target="_blank" rel="noreferrer" className="twitter-card twitter-large-card">
 					{data.twitter_image || data.image ? (
-						<div className="h-72 w-full rounded-t-full">
+						<div>
 							<img
 								src={data.twitter_image || data.image}
-								alt={data.title}
-								className="object-cover rounded-t-full h-72 w-full"
+								alt="Site Image Preview"
 							/>
 						</div>
 					) : (
-						<div className="py-10 rounded-t-full">
+						<div className="no-image">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								className="w-full"
 								width="28"
 								height="28"
 								viewBox="0 0 24 24"
@@ -51,10 +45,10 @@ const TwitterCard = ({ data }) => {
 						</div>
 					)}
 
-					<div className="rounded-b-lg border-t p-3 w-full text-sm">
-						<h3 className="mt-1">{data.twitter_title || data.title}</h3>
-						<p className="my-1 leading-5">{data.twitter_description || data.description}</p>
-						<div className="flex items-center">
+					<div className="twitter-card-info">
+						<h3>{data.twitter_title || data.title}</h3>
+						<p>{data.twitter_description || data.description}</p>
+						<div>
 							<svg
 								height="21"
 								viewBox="0 0 21 21"
@@ -80,21 +74,17 @@ const TwitterCard = ({ data }) => {
 			<a
 				href={data.url}
 				target="_blank" rel="noreferrer" 
-				className="flex items-center w-full mt-3 rounded-full twitter-card">
-				<div className="rounded-l-full h-auto w-1/4 flex items-center">
+				className="twitter-card twitter-short-card">
+				<div>
 					{data.twitter_image || data.image ? (
-						<div className="h-32 w-full rounded-l-full">
-							<img
-								src={data.twitter_image || data.image}
-								alt={data.title}
-								className="object-cover rounded-l-full h-32 w-full"
-							/>
-						</div>
+						<img
+							src={data.twitter_image || data.image}
+							alt="Site Image Preview"
+						/>
 					) : (
-						<div className="flex items-center justify-center h-32 w-full">
+						<div className="no-image">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								className=""
 								width="28"
 								height="28"
 								viewBox="0 0 24 24"
@@ -113,10 +103,10 @@ const TwitterCard = ({ data }) => {
 					)}
 				</div>
 
-				<div className="flex justify-center flex-col rounded-r-full border-l h-32 px-4 w-3/4 text-sm">
-					<h3 className="mt-1">{data.twitter_title || data.title}</h3>
-					<p className="my-1 leading-5">{data.twitter_description || data.description}</p>
-					<div className="flex items-center">
+				<div className="twitter-card-info">
+					<h3>{data.twitter_title || data.title}</h3>
+					<p>{data.twitter_description || data.description}</p>
+					<div>
 						<svg
 							height="21"
 							viewBox="0 0 21 21"

@@ -5,15 +5,13 @@ const MetaList = ({ data }) => {
 	return (
 		<details className="py-4 border-b border-t border-grey-lighter">
 			<summary className="flex items-center">
-				<h4 className="text-lg font-medium">Meta list</h4>
-				<button className="ml-auto">
-					<svg
-						className="fill-current opacity-75 w-4 h-4 -mr-1"
+				<h3 className="text-lg font-medium">Meta list</h3>
+				<svg
+						className=""
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20">
 						<path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
 					</svg>
-				</button>
 			</summary>
 
 			<ul className="mt-4">

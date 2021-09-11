@@ -2,34 +2,28 @@ import Card from "./Card";
 
 const LinkedIn = ({ data }) => {
 	return (
-		<Card width="w-full">
-			<div className="flex flex-col items-start">
-				<div className="flex items-center w-full p-1 block rounded-md mb-2">
-					<img src="https://img.icons8.com/fluency/28/000000/linkedin.png" alt="LinkedIn" />
+		<Card>
+			<div>
+				<div className="card-header">
+					<img src="https://img.icons8.com/fluency/28/000000/linkedin.png" alt="LinkedIn Logo" />
 
-					<h2 className="text-lg font-medium mx-3 mr-3">
-						LinkedIn
-					</h2>
+					<h2>LinkedIn</h2>
 
-					<hr
-						className="flex-grow"
-					/>
+					<hr />
 				</div>
 
-				<a href={data.url} className="w-full rounded-lg linkedin-card">
+				<a href={data.url} className="linkedin-card">
 					{data.image ? (
-						<div className="h-72 w-full rounded-t-lg">
+						<div>
 							<img
 								src={data.image}
-								alt={data.title}
-								className="object-cover rounded-t-lg h-72 w-full"
+								alt="Site Image Preview"
 							/>
 						</div>
 					) : (
-						<div className="py-10 rounded-t-lg w-full">
+						<div className="no-image">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								className="w-full"
 								width="28"
 								height="28"
 								viewBox="0 0 24 24"
@@ -51,14 +45,9 @@ const LinkedIn = ({ data }) => {
 							</svg>
 						</div>
 					)}
-					<div className="rounded-b-lg px-3 py-2 border-t">
-						<h3 className="text-tiny font-medium mb-2">
-							{data.title}
-						</h3>
-						<div className="flex items-center text-xs text-gray-500">                            
-						    <p>{data.urlToShow}</p>
-                            <p className="ml-1">• X min to read</p>
-                        </div>
+					<div className="linkedin-card-info">
+						<h3>{data.title}</h3>      
+						<p>{data.urlToShow} • X min to read</p>
 						{/* <p className="text-xs text-gray-500">{data.description}</p> */}
 					</div>
 				</a>

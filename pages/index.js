@@ -245,71 +245,65 @@ export default function Home() {
 				<meta name="theme-color" content="#3EBD44"></meta>
 			</Head>
 
-			<header className="flex items-center mb-5 w-full bg-gray-100 py-8">
-				<div className="w-3/12">
+			<header>
+				<div>
 					<img
 						src="logo.svg"
-						alt="Metazord.io"
-						className="h-8 ml-5 cursor-pointer"
+						alt="Metazord.io Logo"
 						onClick={(e) => handleLogoClick()}
 					/>
 					<h1 className="sr-only">metazord.io</h1>
 				</div>
 
-				<div className="relative mx-auto flex items-center justify-center w-5/12">
+				<div>
 					<input
 						placeholder="metazord.io"
 						className={`${
 							error
 								? "border-red-400 hover:border-red-400"
 								: "border-gray-300  hover:border-gray-400"
-						} border-2 rounded-lg h-10 pl-2 text-base w-full focus:outline-none`}
+						}`}
 						onKeyPress={(e) => handleEnter(e)}
 						defaultValue={url}
 					/>
-					<span className="absolute bg-gray-900 px-2 py-1 rounded-md right-2 text-xs font-normal text-gray-50">
-						Press <b>Enter</b> to find tags
-					</span>
+					<span>Press <b>Enter</b> to find tags</span>
 				</div>
 
-				<div className="w-3/12"></div>
+				<div></div>
 			</header>
 
-			<main className="flex flex-col items-center min-h-screen">
-				<section className="w-full flex flex-col justify-center items-center">
-					<div className="w-5/12 mx-3">
-						{isLoading ? <Skeleton /> : null}
+			<main>
+				<section id="cards">
+					{isLoading ? <Skeleton /> : null}
 
-						{error ? <Error /> : null}
+					{error ? <Error /> : null}
 
-						{Object.keys(data).length > 0 ? (
-							<>
-								<MetaList data={metaList} />
+					{Object.keys(data).length > 0 ? (
+						<>
+							<MetaList data={metaList} />
 
-								<GoogleCard data={data} />
+							<GoogleCard data={data} />
 
-								<FacebookCard data={data} />
+							<FacebookCard data={data} />
 
-								<TwitterCard data={data} />
+							<TwitterCard data={data} />
 
-								<LinkedIn data={data} />
+							<LinkedIn data={data} />
 
-								<SlackCard data={data} />
+							<SlackCard data={data} />
 
-								<p className="text-xs text-gray-400 my-3">
-									Card`s may be different. Representation is based on an approximation of each web documentation.
-								</p>
-							</>
-						) : null}
-					</div>
+							<div className="disclaimer">
+								<p>Card`s may be different. Representation is based on an approximation of each web documentation.</p>
+							</div>
+						</>
+					) : null}
 				</section>
 
-				<section className="w-8/12 py-6 px-1 my-10">
-					<h4 className="text-xl font-medium">Why use meta tags?</h4>
+				<section className="faqs">
+					<h4>Why use meta tags?</h4>
 					<blockquote
-						className="text-sm text-gray-500 mt-2 mb-5"
 						cite="https://developers.google.com/search/docs/advanced/crawling/special-tags">
-						<p className="pl-2 border-l-2">
+						<p>
 							Page-level meta tags are a great way for website
 							owners to provide search engines with information
 							about their sites. Meta tags can be used to provide
@@ -317,111 +311,101 @@ export default function Home() {
 							processes only the meta tags they understand and
 							ignores the rest.
 						</p>
-						<p className="text-xs text-gray-500 font-medium mt-2 mb-3 text-right">
+						<p className="source">
 							from{" "}
 							<a
 								href="https://developers.google.com/search/docs/advanced/crawling/special-tags"
 								target="_blank"
-								rel="noreferrer"
-								className="underline">
+								rel="noreferrer">
 								developers.google.com
 							</a>
 						</p>
 					</blockquote>
 
-					<h4 className="text-xl font-medium">
+					<h4>
 						What is Open Graph protocol?
 					</h4>
 					<blockquote
-						className="text-sm text-gray-500 mt-2 mb-5"
 						cite="https://ogp.me/">
-						<p className="pl-2 border-l-2">
+						<p>
 							The Open Graph protocol enables any web page to
 							become a rich object in a social graph. For
 							instance, this is used on Facebook to allow any web
 							page to have the same functionality as any other
 							object on Facebook.
 						</p>
-						<p className="text-xs text-gray-500 font-medium mt-2 mb-3 text-right">
+						<p className="source">
 							from{" "}
 							<a
 								href="https://ogp.me/"
 								target="_blank"
-								rel="noreferrer"
-								className="underline">
+								rel="noreferrer">
 								ogp.me
 							</a>
 						</p>
 					</blockquote>
 
-					<h4 className="text-xl font-medium">Documentation</h4>
-					<ul className="mt-2 mb-3">
+					<h4>Documentation & Resources</h4>
+					<ul>
 						<li>
-							<p className="text-sm text-gray-500 mt-2 mb-3">
+							<p>
 								<a href="https://www.linkedin.com/help/linkedin/answer/46687/making-your-website-shareable-on-linkedin"
 								target="_blank"
-								rel="noreferrer"
-								className="underline">
+								rel="noreferrer">
 									Making Your Website Shareable on LinkedIn
 								</a> &#8212; LinkedIn
 							</p>
 						</li>
 						<li>
-							<p className="text-sm text-gray-500 mt-2 mb-3">
+							<p>
 								<a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards"
 								target="_blank"
-								rel="noreferrer"
-								className="underline">
+								rel="noreferrer">
 									About Twitter Cards
 								</a> &#8212; Twitter
 							</p>
 						</li>
 						<li>
-							<p className="text-sm text-gray-500 mt-2 mb-3">
+							<p>
 								<a href="https://developers.facebook.com/docs/sharing/webmasters/"
 								target="_blank"
-								rel="noreferrer"
-								className="underline">
+								rel="noreferrer">
 									A Guide to Sharing for Webmasters
 								</a> &#8212; Facebook
 							</p>
 						</li>
 						<li>
-							<p className="text-sm text-gray-500 mt-2 mb-3">
+							<p>
 								<a href="https://developers.facebook.com/docs/sharing/best-practices/"
 								target="_blank"
-								rel="noreferrer"
-								className="underline">
+								rel="noreferrer">
 									Best Practices - Sharing
 								</a> &#8212; Facebook
 							</p>
 						</li>
 						<li>
-							<p className="text-sm text-gray-500 mt-2 mb-3">
+							<p>
 								<a href="https://developers.google.com/search/blog/2021/08/update-to-generating-page-titles"
 								target="_blank"
-								rel="noreferrer"
-								className="underline">
+								rel="noreferrer">
 									An update to how we generate web page titles 
 								</a> &#8212; Google
 							</p>
 						</li>
 						<li>
-							<p className="text-sm text-gray-500 mt-2 mb-3">
+							<p>
 								<a href="https://developers.facebook.com/tools/debug/"
 								target="_blank"
-								rel="noreferrer"
-								className="underline">
+								rel="noreferrer">
 									Sharing Debugger
 								</a> &#8212; Facebook
 							</p>
 						</li>
 						<li>
-							<p className="text-sm text-gray-500 mt-2 mb-3">
+							<p>
 								<a href="https://cards-dev.twitter.com/validator"
 								target="_blank"
-								rel="noreferrer"
-								className="underline">
+								rel="noreferrer">
 									Card Validator
 								</a> &#8212; Twitter
 							</p>

@@ -3,57 +3,50 @@ import Card from "./Card";
 const Slack = ({ data }) => {
 	return (
 		<Card>
-			<div className="flex flex-col items-start w-full">
-				<div className="flex items-center w-full p-1 block rounded-md mb-2">
-					<img src="https://img.icons8.com/color/28/000000/slack-new.png" alt="Google"/>
+			<div>
+				<div className="card-header">
+					<img src="https://img.icons8.com/color/28/000000/slack-new.png" alt="Slack Logo"/>
 
-					<h2 className="text-lg font-medium mx-3 mr-4">
-						Slack
-					</h2>
+					<h2>Slack</h2>
 
-					<hr
-						className="flex-grow"
-					/>
+					<hr />
 				</div>
 
-				<div className="w-full border-l-4 pl-3">
-                    <div className="flex items-center mb-1">
-                        <img
-                            src={data.favicon}
-                            alt="Favicon"
-                            className="max-h-5"
-                        />
+				<div className="slack-card">
+                    <div className="slack-card-fav">
                         {
-                            data.og_site_name ? <p className="text-tiny ml-1">{data.og_site_name}</p> : null
+                            data.favicon ? 
+                            <img
+                                src={data.favicon}
+								alt="Site Favicon Preview"
+                            /> : null
+                        }
+                        {
+                            data.og_site_name ? <p>{data.og_site_name}</p> : null
                         }
                         
                     </div>
-					<h3 className="text-sm font-semibold">
+					<h3>
 						<a
 							href={data.url}
                             target="_blank"
-                            rel="noreferrer" 
-							className="text-blue-900">
+                            rel="noreferrer" >
 							{ data.title }
 						</a>
 					</h3>
-					<p className="text-tiny text-gray-900 mt-1 mb-2">
-						{ data.description }
-					</p>
-                    <div>
+					<p>{ data.description }</p>
+                    <div className="slack-card-img-preview">
                         {data.image ? (
-                            <div className="h-56">
+                            <div>
                                 <img
                                     src={data.image}
-                                    alt={data.title}
-                                    className="object-cover rounded-md h-56 border border-gray-200"
+                                    alt="Site Image Preview"
                                 />
                             </div>
                         ) : (
-                            <div className="py-10 w-6/12 rounded-md border border-gray-200">
+                            <div className="no-image">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="w-full"
                                     width="28"
                                     height="28"
                                     viewBox="0 0 24 24"
