@@ -1,6 +1,6 @@
 const Error = () => {
     return (
-        <div className="error-alert">
+        <div className="alert error-alert">
             <p>Link not found. Please check and try again.</p>
         </div>
     );

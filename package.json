@@ -1,6 +1,6 @@
 {
-  "name": "checkmeta",
-  "version": "0.1.0",
+  "name": "metazord.io",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,14 +13,12 @@
     "cheerio": "^1.0.0-rc.10",
     "next": "11.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "simple-icons": "^5.12.0"
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.3",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
-    "postcss": "^8.3.6",
-    "tailwindcss": "^2.2.8"
+    "postcss": "^8.3.6"
   }
 }

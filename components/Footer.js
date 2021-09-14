@@ -3,17 +3,17 @@ const Footer = () => {
         <footer>
 
             <div>
-				<img src="logo-gray.svg" alt="Metazord.io Logo" />
-				<h1 className="sr-only">metazord.io</h1>
-			</div>
-
-            <div>
-                <p>made by <a href="https://www.agustinl.com" target="_blank" rel="noreferrer">@agustinl</a> {/* | <a href="!#" target="_blank" rel="noreferrer">GitHub</a> */}</p>
-                <p><small>{new Date().getFullYear()}</small></p>
+                <p>{new Date().getFullYear()}</p>
             </div>
 
             <div>
-                <p><a href="https://iconos8.es/" target="_blank" rel="noreferrer">Icons by Icons8</a></p>
+                <img src="logo-gray.svg" alt="Metazord.io Logo" />
+                <h1 className="sr-only">metazord.io</h1>
+            </div>
+
+            <div>
+                <p><small>made by <a href="https://www.agustinl.com" target="_blank" rel="noreferrer">@agustinl</a></small></p>
+                <p><small><a href="https://iconos8.es/" target="_blank" rel="noreferrer">Icons by Icons8</a></small></p>
             </div>
 
         </footer>

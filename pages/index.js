@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 
 const cheerio = require("cheerio");
@@ -14,17 +14,22 @@ import Error from "../components/Error";
 import SlackCard from "../components/SlackCard";
 import Footer from "../components/Footer";
 
-export default function Home() {
-	const [url, setUrl] = useState("https://kiff.app/");
-	const [data, setData] = useState({});
-	const [metaList, setMetaList] = useState({});
+export default function Home({ init_meta_list, init_meta_data }) {
+
+	const [url, setUrl] = useState("");
+	const [data, setData] = useState(init_meta_data);
+	const [metaList, setMetaList] = useState(init_meta_list);
 	const [error, setError] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 
-	const handleEnter = (event) => {
+	const initialRender = useRef(true);
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
 		setError(false);
 
-		if (event.code === "Enter" || event.code === "NumpadEnter") {
+		/* if (event.code === "Enter" || event.code === "NumpadEnter") {
 			var search = event.target.value.replace(
 				/^(?:https?:\/\/)?(?:http?:\/\/)?/i,
 				"https://"
@@ -33,7 +38,17 @@ export default function Home() {
 			setIsLoading(true);
 			setData({});
 			setUrl(search);
-		}
+		} */
+		
+		var searchInput = event.target.search.value;
+		var search = searchInput.replace(
+			/^(?:https?:\/\/)?(?:http?:\/\/)?/i,
+			"https://"
+		);
+
+		setIsLoading(true);
+		setData({});
+		setUrl(search);
 	};
 
 	const handleLogoClick = () => {
@@ -48,6 +63,7 @@ export default function Home() {
 			const response = await axios
 				.get(url)
 				.then(function (response) {
+					
 					const body = response.data;
 					const $ = cheerio.load(body);
 
@@ -92,7 +108,7 @@ export default function Home() {
 
 					const title = $("title").text() || $('meta[name="title"]').attr("content");
 					const description = $('meta[name="description"]').attr("content");
-					const canonical = $('meta[rel="canonical"]').attr("href");
+					const canonical = $('meta[rel="canonical"]').attr("href") || $('link[rel="canonical"]').attr("href");
 					const og_title = $('meta[property="og:title"]').attr("content");
 					const og_description = $('meta[property="og:description"]').attr("content");
 					const og_image = tmp_image;
@@ -154,7 +170,13 @@ export default function Home() {
 				}); */
 		};
 
-		fetchData(url);
+		// Prevent useEffect during initial render 
+		if (initialRender.current) {
+			initialRender.current = false;
+		} else {
+			fetchData(url);
+		}
+		
 	}, [url]);
 
 	const isValidUrl = (pathImage) => {
@@ -171,7 +193,7 @@ export default function Home() {
 		<>
 			<Head>
 				<title>
-					Metazord.io | Site meta tags information and live preview
+					metazord.io | Site meta tags information and live preview
 				</title>
 				<meta
 					name="description"
@@ -180,7 +202,7 @@ export default function Home() {
 
 				<meta
 					name="twitter:title"
-					content="Metazord.io | Site meta tags information and live preview"
+					content="metazord.io | Site meta tags information and live preview"
 				/>
 				<meta
 					name="twitter:description"
@@ -194,7 +216,7 @@ export default function Home() {
 				<meta property="og:type" content="website" />
 				<meta
 					property="og:title"
-					content="Metazord.io | Site meta tags information and live preview"
+					content="metazord.io | Site meta tags information and live preview"
 				/>
 				<meta
 					property="og:description"
@@ -202,7 +224,7 @@ export default function Home() {
 				/>
 				<meta
 					property="og:image"
-					content="https://metazord.io/og-image.png"
+					content="/og-image.png"
 				/>
 				<meta
 					property="og:image:alt"
@@ -255,19 +277,21 @@ export default function Home() {
 					<h1 className="sr-only">metazord.io</h1>
 				</div>
 
-				<div>
+				<form
+					onSubmit={handleSubmit}
+				>
 					<input
 						placeholder="metazord.io"
 						className={`${
 							error
-								? "border-red-400 hover:border-red-400"
-								: "border-gray-300  hover:border-gray-400"
+								? "input-error"
+								: ""
 						}`}
-						onKeyPress={(e) => handleEnter(e)}
-						defaultValue={url}
+						name="search"
+						/* onKeyPress={(e) => handleEnter(e)} */
 					/>
-					<span>Press <b>Enter</b> to find tags</span>
-				</div>
+					<span>Enter to find tags</span>
+				</form>
 
 				<div></div>
 			</header>
@@ -417,4 +441,47 @@ export default function Home() {
 			<Footer />
 		</>
 	);
+}
+
+export async function getStaticProps() {
+
+	const init_meta_list = {
+		'title': "metazord.io | Site meta tags information and live preview",
+		'description': "Get a complete information and preview of your site meta tags",
+		'og:title': "metazord.io | Site meta tags information and live preview",
+		'og:description': "Get a complete information and preview of your site meta tags",
+		'og:image': "/og-image.png",
+		'og:url': "https://metazord.io",
+		'og:site_name': "Metazord.io Website",
+		'og:type': "website",
+		'favicon': "/favicon.png",
+		'canonical': "https://metazord.io",
+		'twitter:title': "metazord.io | Site meta tags information and live preview",
+		'twitter:description': "Get a complete information and preview of your site meta tags",
+		'twitter:site': "@metazord",
+		'twitter:creator': "@agustinlautaro",
+		'twitter:card': "summary_large_image",
+		'twitter:image': "/og-image.png"
+	}
+	
+	const init_meta_data = {
+		title: "metazord.io | Site meta tags information and live preview",
+		description: "Get a complete information and preview of your site meta tags",
+		image: "/og-image.png",
+		og_url: "https://metazord.io",
+		og_site_name: "Metazord.io Website",
+		favicon: "/favicon.png",
+		twitter_title: "metazord.io | Site meta tags information and live preview",
+		twitter_description: "Get a complete information and preview of your site meta tags",
+		twitter_image: "/og-image.png",
+		url: "https://metazord.io",
+		urlToShow: "metazord.io",
+	}
+
+	return {
+	  props: {
+		init_meta_list,
+		init_meta_data
+	  },
+	}
 }
