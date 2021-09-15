@@ -1,5 +1,5 @@
-import Check from "./Check";
-import XCircle from "./XCircle";
+import Check from "./ui/Check";
+import XCircle from "./ui/XCircle";
 
 const MetaList = ({ data }) => {
 	return (

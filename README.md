@@ -4,7 +4,7 @@
 - [x] Footer
 - [x] Remove url and urlToShow from props
 
-- [x] **Remove tailwind**
+- [x] Remove tailwind
 - [x] ~~Colors Settings~~
 - [x] Responsive Design
 
@@ -12,6 +12,8 @@
 - [x] Design
 - [x] Producthunt launch upcoming
 
-- [ ] Social Cards CSS VARS
-- [ ] Icons Social Bad pixels on mobile
-- [ ] Skeleton Responsive
+- [x] Social Cards CSS VARS
+- [x] Icons Social Bad pixels on mobile
+- [x] Skeleton Responsive
+
+- [ ] GA4 Analytics Events

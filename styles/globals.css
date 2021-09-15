@@ -1,5 +1,7 @@
 :root {
-	--main-bg-color: #3ebd44;
+	--body-bg: #FFF;
+	--text-color: #000;
+	--main-color: #3ebd44;
 	--gray-1:#f8f9fa;
 	--gray-2:#eaeaea;
 	--gray-3:#ced4da;
@@ -10,6 +12,72 @@
 	--red-2: #ffe3e3;
 	--red-3: #fa5252;
 	--red-4: #c92a2a;
+
+	--facebook-bg: #f0f2f5;
+	--facebook-border: #ced0d4;
+	--facebook-color-primary: #050505;
+	--facebook-color-secondary: #65676b;
+
+	--twitter-bg: #fff;
+	--twitter-bg-hover: #efefef;
+	--twitter-bg-secondary: #f7f9f9;
+	--twitter-border: #cfd9de;
+	--twitter-color-primary: #0f1419;
+	--twitter-color-secondary: #536471;
+
+	--linkedin-bg: #eef3f8;
+	--linkedin-border: #ebebeb;
+	--linkedin-color-primary: #181819;
+	--linkedin-color-secondary: #5f6163;
+
+	--slack-color-primary: #1e3a8a;
+	--slack-color-secondary: #000;
+
+	--google-link-color: #202124;
+	--google-title-color: #1a0dab;
+	--google-paragraph-color: #4d5156;
+
+	--skeleton-bg: #e9ecef;
+	--skeleton-gradient: rgba(255,255,255, 0) 0, rgba(255,255,255, 0.2) 20%, rgba(255,255,255, 0.5) 60%, rgba(255,255,255, 0);
+	
+}
+
+:root.dark {
+	--body-bg: #111;
+	--text-color: #FFF;
+	--main-color: #3ebd44;
+	--gray-1:#15181c;
+	--gray-2:#374151;
+	--gray-3:#374151;
+	--gray-4:#374151;
+	--gray-5:#868e96;
+
+	--facebook-bg: #3a3b3c;
+	--facebook-border: #3e4042;
+	--facebook-color-primary: #dbdde2;
+	--facebook-color-secondary: #9da0a5;
+
+	--twitter-bg: #000;
+	--twitter-bg-hover: #15181c;
+	--twitter-bg-secondary: #15181c;
+	--twitter-border: #2f3336;
+	--twitter-color-primary: #d9d9d9;
+	--twitter-color-secondary: #6e767d;
+
+	--linkedin-bg: #384351;
+	--linkedin-border: #2f3336;
+	--linkedin-color-primary: #d4dfeb;
+	--linkedin-color-secondary: #959fa8;
+
+	--slack-color-primary: #d1d2d3;
+	--slack-color-secondary: #9a9c9e;
+
+	--google-link-color: #d6d7dc;
+	--google-title-color: #75a5db;
+	--google-paragraph-color: #c0bdc4;
+
+	--skeleton-bg: #15181c;
+	--skeleton-gradient: rgba(17,17,17, 0) 0, rgba(17,17,17, 0.2) 20%, rgba(17,17,17, 0.5) 60%, rgba(17,17,17, 0);
 }
 
 * {
@@ -28,6 +96,8 @@ body {
 	text-rendering: optimizeSpeed;
 	line-height: 1.5;
 	margin: 0;
+	background: var(--body-bg);
+	color:var(--text-color);
 }
 
 a {
@@ -77,6 +147,8 @@ header input {
 	width: 100%;
 	border-radius: 5px;
 	border: solid 1px var(--gray-3);
+	background:var(--body-bg);
+	color:inherit;
 	height: 38px;
     padding: 0 125px 0 10px;
 	font-size: 1.025rem;
@@ -85,13 +157,13 @@ header input {
 }
 
 header input:hover {
-	border-color: var(--main-bg-color);
+	border-color: var(--main-color);
 }
 
 header input:focus {
 	outline: none;
-	box-shadow: 0 0 0 1px var(--main-bg-color);
-	border-color: var(--main-bg-color);
+	box-shadow: 0 0 0 1px var(--main-color);
+	border-color: var(--main-color);
 }
 
 header form span {
@@ -104,7 +176,6 @@ header form span {
 	padding: 5px 10px;
 	text-align: center;
 	line-height: 1rem;
-	color: #666;
 	font-weight: 500;
 }
 
@@ -115,6 +186,16 @@ header input.input-error:hover {
 header input.input-error:focus {
 	box-shadow: 0 0 0 1px var(--red-3);
 	border-color: var(--red-3);
+}
+
+header div:last-child {
+	display:flex;
+	align-items:center;
+	justify-content:flex-end;
+}
+
+header div:last-child svg {
+	cursor:pointer;
 }
 
 footer {
@@ -137,7 +218,7 @@ footer p {
 }
 
 footer a:hover {
-	color: var(--main-bg-color);
+	color: var(--main-color);
 }
 
 /* Main */
@@ -198,6 +279,10 @@ main {
 	padding: 0;
 }
 
+.card-header img {
+    max-width:28px;
+}
+
 /* Meta List Tag */
 
 details {
@@ -207,6 +292,7 @@ details {
 	margin-bottom: 50px;
 }
 details summary svg {
+	fill:var(--text-color);
 	transform: rotate(90deg);
 }
 
@@ -272,6 +358,7 @@ details ul li div:nth-child(2) {
 details ul li h4 {
 	font-weight: 500;
 	margin: 0;
+	line-height: 1;
 }
 
 details ul li p {
@@ -295,7 +382,7 @@ details ul li img {
 
 .google-card > a {
 	text-decoration: none;
-	color: #202124;
+	color: var(--google-link-color);
 	font-size: 0.875rem;
 }
 
@@ -307,7 +394,7 @@ details ul li img {
 
 .google-card h3 a {
 	text-decoration: none;
-	color: #1a0dab;
+	color: var(--google-title-color);
 }
 
 .google-card h3 a:hover {
@@ -316,7 +403,7 @@ details ul li img {
 
 .google-card p {
 	margin: 0;
-	color: #4d5156;
+	color: var(--google-paragraph-color);
 	font-size: 0.875rem;
 }
 
@@ -327,17 +414,17 @@ details ul li img {
 	flex-direction: column;
 	border-radius: 10px;
 	margin: 20px 0;
-	background: #f0f2f5;
-	border: solid 1px #ced0d4;
+	background: var(--facebook-bg);
+	border: solid 1px var(--facebook-border);
 }
 
 .facebook-card > div {
-	border-color: #ced0d4;
+	border-color: var(--facebook-border);
 }
 
 .facebook-card a,
 .facebook-card p {
-	color: #65676b;
+	color: var(--facebook-color-secondary);
 }
 
 .facebook-card img {
@@ -360,16 +447,16 @@ details ul li img {
 
 .facebook-card.facebook-large-card div:first-child {
 	height: 260px;
-	background: #fff;
+	background: var(--body-bg);
 }
 
 .facebook-card.facebook-short-card div:first-child {
 	min-height: 130px;
-	background: #fff;
+	background: var(--body-bg);
 }
 
 .facebook-card.facebook-large-card .facebook-card-info {
-	border-top: solid 1px #cfd9de;
+	border-top: solid 1px var(--facebook-border);
 	padding: 8px 20px;
 }
 
@@ -377,7 +464,7 @@ details ul li img {
 	font-weight: 500;
 	margin: 0;
 	line-height: 1.4;
-	color: #050505;
+	color: var(--facebook-color-primary);
 }
 
 .facebook-card.facebook-large-card .facebook-card-info h3 {
@@ -421,7 +508,7 @@ details ul li img {
 
 .facebook-card.facebook-short-card .facebook-card-info {
 	overflow: auto;
-	border-left: solid 1px #cfd9de;
+	border-left: solid 1px var(--facebook-border);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -436,21 +523,22 @@ details ul li img {
 	border-radius: 15px;
 	margin: 20px 0;
 	font-size: 0.938rem;
-	background: #fff;
-	border: solid 1px #cfd9de;
+	background: var(--twitter-bg);
+	border: solid 1px var(--twitter-border);
 }
 
 .twitter-card:hover {
-	background: #efefef;
+	background: var(--twitter-bg-hover);
 }
 
 .twitter-card > div {
-	border-color: #cfd9de;
+	border-color: var(--twitter-border);
 }
 
 .twitter-card a,
-.twitter-card p {
-	color: #536471;
+.twitter-card p,
+.twitter-card-info svg {
+	color: var(--twitter-color-secondary);
 }
 
 .twitter-card img {
@@ -473,16 +561,16 @@ details ul li img {
 
 .twitter-card.twitter-large-card div:first-child {
 	height: 260px;
-	background: #f7f9f9;
+	background: var(--twitter-bg-secondary);
 }
 
 .twitter-card.twitter-short-card div:first-child {
 	height: 130px;
-	background: #f7f9f9;
+	background: var(--twitter-bg-secondary);
 }
 
 .twitter-card.twitter-large-card .twitter-card-info {
-	border-top: solid 1px #cfd9de;
+	border-top: solid 1px var(--twitter-border);
 	padding: 10px 12px;
 }
 
@@ -491,7 +579,7 @@ details ul li img {
 	margin: 0;
 	line-height: 1.4;
 	font-size: 0.938rem;
-	color: #0f1419;
+	color: var(--twitter-color-primary);
 }
 
 .twitter-card .twitter-card-info p {
@@ -525,7 +613,7 @@ details ul li img {
 
 .twitter-card.twitter-short-card .twitter-card-info {
 	overflow: auto;
-	border-left: solid 1px #cfd9de;
+	border-left: solid 1px var(--twitter-border);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -539,8 +627,8 @@ details ul li img {
 	flex-direction: column;
 	border-radius: 10px;
 	margin: 20px 0;
-	background: #eef3f8;
-	border: solid 1px #ebebeb;
+	background: var(--linkedin-bg);
+	border: solid 1px var(--linkedin-border);
 }
 
 .linkedin-card img {
@@ -558,18 +646,18 @@ details ul li img {
 
 .linkedin-card div:first-child {
 	height: 250px;
-	background: #fff;
+	background: var(--body-bg);
 }
 
 .linkedin-card .linkedin-card-info {
-	border-top: solid 1px #ebebeb;
+	border-top: solid 1px var(--linkedin-border);
 	padding: 8px 15px 12px;
 }
 
 .linkedin-card .linkedin-card-info h3 {
 	font-weight: 500;
 	margin: 0;
-	color: #181819;
+	color: var(--linkedin-color-primary);
 }
 
 .linkedin-card h3 {
@@ -579,7 +667,7 @@ details ul li img {
 .linkedin-card .linkedin-card-info p {
 	margin: 5px 0 0;
 	line-height: 1.2;
-	color: #5f6163;
+	color: var(--linkedin-color-secondary);
 	font-size: 0.75rem;
 }
 
@@ -606,6 +694,7 @@ details ul li img {
 .slack-card .slack-card-fav p {
 	font-size: 0.875rem;
 	margin: 0;
+	color: var(--slack-color-secondary);
 }
 
 .slack-card .slack-card-img-preview img {
@@ -619,12 +708,13 @@ details ul li img {
 	font-size: 0.938rem;
 	font-weight: 500;
 	margin: 5px 0 0;
-	color: #1e3a8a;
+	color: var(--slack-color-primary);
 }
 
 .slack-card p {
 	font-size: 0.875rem;
 	margin: 5px 0 10px;
+	color: var(--slack-color-secondary);
 }
 
 /* Common Style */
@@ -672,7 +762,6 @@ details ul li img {
 .faqs {
 	max-width: 980px;
 	margin: 100px auto;
-	color: #343a40;
 }
 
 .faqs h4 {
@@ -700,7 +789,7 @@ blockquote p:first-child {
 }
 
 .faqs a:hover {
-	color: var(--main-bg-color);
+	color: var(--main-color);
 }
 
 .faqs ul li {
@@ -756,7 +845,6 @@ blockquote p:first-child {
 .skeleton-card {
 	display: flex;
 	flex-direction: column;
-	background: #fff;
 	min-width: 500px;
 }
 
@@ -781,7 +869,7 @@ blockquote p:first-child {
 }
 
 .animate-pulse {
-	background: #e9ecef;
+	background: var(--skeleton-bg);
 	border-radius: 2px;
 	position: relative;
 	overflow: hidden;
@@ -796,10 +884,7 @@ blockquote p:first-child {
 	transform: translateX(-100%);
 	background-image: linear-gradient(
 		90deg,
-		rgba(255, 255, 255, 0) 0,
-		rgba(255, 255, 255, 0.2) 20%,
-		rgba(255, 255, 255, 0.5) 60%,
-		rgba(255, 255, 255, 0)
+		var(--skeleton-gradient)
 	);
 	-webkit-animation: shimmer 2s infinite;
 	animation: shimmer 2s infinite;
@@ -873,6 +958,9 @@ blockquote p:first-child {
 	header div:nth-child(1) {
 		margin-bottom: 20px;
 	}
+	.skeleton-card {
+	    min-width:100%;
+	}
 }
 
 @media (max-width: 440px) {
@@ -886,5 +974,8 @@ blockquote p:first-child {
 
 	header form span {
 		display: none;
+	}
+	#card {
+	    overflow-x:scroll;
 	}
 }

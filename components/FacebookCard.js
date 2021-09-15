@@ -5,7 +5,8 @@ const FacebookCard = ({ data }) => {
 		<Card>
 			<div>
 				<div className="card-header">
-					<img src="https://img.icons8.com/fluency/28/000000/facebook-new.png" alt="Facebook Logo" />
+					{/* <img src="https://img.icons8.com/fluency/28/000000/facebook-new.png" alt="Facebook Logo" /> */}
+					<img src="/icons/facebook.svg" alt="Facebook Logo" />
 
 					<h2>Facebook</h2>
 
