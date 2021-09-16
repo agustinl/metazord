@@ -1,4 +1,4 @@
-### To-Do checklist
+### Website To-Do
 
 - [x] SEO information
 - [x] Footer
@@ -16,4 +16,8 @@
 - [x] Icons Social Bad pixels on mobile
 - [x] Skeleton Responsive
 
-- [ ] GA4 Analytics Events
+- [x] GA4 Analytics Events
+
+### Product Hunt Launch To-Do
+
+- [ ] Description

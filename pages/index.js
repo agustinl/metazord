@@ -57,8 +57,7 @@ export default function Home({ init_meta_list, init_meta_data }) {
 			setData({});
 			setUrl(search);
 		} */
-
-		var searchInput = event.target.search.value;
+		var searchInput = event.target.search.value;		
 		var search = searchInput.replace(
 			/^(?:https?:\/\/)?(?:http?:\/\/)?/i,
 			"https://"
@@ -80,7 +79,9 @@ export default function Home({ init_meta_list, init_meta_data }) {
 	useEffect(() => {
 		const fetchData = async (url) => {
 			const response = await axios
-				.get(`/api/url?url=${url}`)
+				.get(`/api/url?url=${url}`, {
+					timeout: 8000
+				})
 				.then(function (response) {
 					setData(response.data.meta_data);
 					setMetaList(response.data.meta_list);
@@ -93,7 +94,12 @@ export default function Home({ init_meta_list, init_meta_data }) {
 			/* .then(function () {
 					console.log("ok");
 				}); */
-		};
+		};		
+
+		window.dataLayer.push({
+			'event' : 'search',
+			'searchURL' : url
+		});
 
 		// Prevent useEffect during initial render
 		if (initialRender.current) {
