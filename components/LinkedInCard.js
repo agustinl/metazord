@@ -6,7 +6,7 @@ const LinkedIn = ({ data }) => {
 			<div>
 				<div className="card-header">
 					{/* <img src="https://img.icons8.com/fluency/28/000000/linkedin.png" alt="LinkedIn Logo" /> */}
-					<img src="/icons/linkedin.svg" alt="LinkedIn Logo" />
+					<img src="/icons/linkedin.svg" alt="LinkedIn Logo" width="28" height="28" />
 
 					<h2>LinkedIn</h2>
 

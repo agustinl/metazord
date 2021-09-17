@@ -6,7 +6,7 @@ const TwitterCard = ({ data }) => {
 			<div>
 				<div className="card-header">
 					{/* <img src="https://img.icons8.com/color/28/000000/twitter--v1.png" alt="Twitter Logo" /> */}
-					<img src="/icons/twitter.svg" alt="Twitter Logo" />
+					<img src="/icons/twitter.svg" alt="Twitter Logo" width="28" height="28" />
 					
 					<h2>Twitter</h2>
 

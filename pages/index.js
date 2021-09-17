@@ -61,7 +61,7 @@ export default function Home({ init_meta_list, init_meta_data }) {
 		var search = searchInput.replace(
 			/^(?:https?:\/\/)?(?:http?:\/\/)?/i,
 			"https://"
-		);
+		).toLowerCase();
 
 		setIsLoading(true);
 		setData({});
@@ -94,17 +94,24 @@ export default function Home({ init_meta_list, init_meta_data }) {
 			/* .then(function () {
 					console.log("ok");
 				}); */
-		};		
+		};
 
-		window.dataLayer.push({
-			'event' : 'search',
-			'searchURL' : url
-		});
+		if (localStorage.metazordTheme === 'dark' || (!('metazordTheme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            theme.dispatch({ type: "dark" });
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
 
 		// Prevent useEffect during initial render
 		if (initialRender.current) {
 			initialRender.current = false;
 		} else {
+			window.dataLayer.push({
+				'event' : 'search',
+				'searchURL' : url
+			});
+
 			fetchData(url);
 		}
 	}, [url]);
@@ -131,6 +138,7 @@ export default function Home({ init_meta_list, init_meta_data }) {
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:site" content="@metazord" />
 				<meta name="twitter:creator" content="@agustinlautaro" />
+				<meta name="twitter:image" content="/og-image.png" />
 
 				<meta property="og:url" content="https://metazord.io" />
 				<meta property="og:type" content="website" />
@@ -205,7 +213,7 @@ export default function Home({ init_meta_list, init_meta_data }) {
 				</form>
 
 				<div>
-					<a onClick={themeMode} aria-label="Switch Theme">
+					<a onClick={themeMode} aria-label="Switch Theme" role="link">
 						{
                         	mode == "light" ? <Moon /> : <Sun />
 						}

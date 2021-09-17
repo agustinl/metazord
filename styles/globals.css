@@ -6,7 +6,7 @@
 	--gray-2:#eaeaea;
 	--gray-3:#ced4da;
 	--gray-4:#e5e7eb;
-	--gray-5:#868e96;
+	--gray-5:#54595e;
 
 	--red-1: #fff5f5;
 	--red-2: #ffe3e3;
@@ -43,10 +43,10 @@
 }
 
 :root.dark {
-	--body-bg: #111;
+	--body-bg: #111111;/*202124*/
 	--text-color: #FFF;
 	--main-color: #3ebd44;
-	--gray-1:#15181c;
+	--gray-1:#15181c;/*1b1c1f*/
 	--gray-2:#374151;
 	--gray-3:#374151;
 	--gray-4:#374151;
@@ -72,9 +72,9 @@
 	--slack-color-primary: #d1d2d3;
 	--slack-color-secondary: #9a9c9e;
 
-	--google-link-color: #d6d7dc;
-	--google-title-color: #75a5db;
-	--google-paragraph-color: #c0bdc4;
+	--google-link-color: #bdc1c6;
+	--google-title-color: #8ab4f8;
+	--google-paragraph-color: #bdc1c6;
 
 	--skeleton-bg: #15181c;
 	--skeleton-gradient: rgba(17,17,17, 0) 0, rgba(17,17,17, 0.2) 20%, rgba(17,17,17, 0.5) 60%, rgba(17,17,17, 0);
@@ -116,6 +116,7 @@ a {
 
 header {
 	background: var(--gray-1);
+	border-bottom: solid 1px var(--gray-2);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -124,7 +125,7 @@ header {
 }
 
 header > div {
-	width: 33%;
+	width:calc(100vw / 3);
 }
 
 header div:nth-child(1) {
@@ -198,8 +199,14 @@ header div:last-child svg {
 	cursor:pointer;
 }
 
+header a {
+    line-height:1;
+    margin-left:20px;
+}
+
 footer {
 	background: var(--gray-1);
+	border-top: solid 1px var(--gray-2);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -279,14 +286,14 @@ main {
 	padding: 0;
 }
 
-.card-header img {
+/* .card-header img {
     max-width:28px;
-}
+} */
 
 /* Meta List Tag */
 
 details {
-	user-select: none;
+	/* user-select: none; */
 	border-bottom: 1px solid var(--gray-4);
 	padding: 20px 0 0px;
 	margin-bottom: 50px;
@@ -312,7 +319,7 @@ summary {
 	padding-bottom: 10px;
 }
 
-summary h3 {
+summary h2 {
 	font-size: 1.3rem;
 	font-weight: 500;
 	margin: 0;
@@ -346,6 +353,10 @@ details ul li:hover {
 	background: var(--gray-1);
 }
 
+details ul li div:first-child {
+    height:15px;
+}
+
 details ul li:last-child {
 	border: none;
 }
@@ -355,10 +366,10 @@ details ul li div:nth-child(2) {
 	margin: 0 10px;
 }
 
-details ul li h4 {
+details ul li h3 {
+	font-size: 0.875rem;
 	font-weight: 500;
 	margin: 0;
-	line-height: 1;
 }
 
 details ul li p {
@@ -772,7 +783,7 @@ details ul li img {
 
 blockquote p:first-child {
 	border-left: solid 3px var(--gray-3);
-	padding: 10px;
+	padding: 0 10px;
 }
 
 .faqs p {
@@ -942,24 +953,34 @@ blockquote p:first-child {
 	}
 
 	header > div {
-		width: auto;
-	}
-
-	header div:nth-child(3) {
-		display: none;
+		width: 33%;
 	}
 }
 
-@media (max-width: 680px) {
+@media (max-width: 860px) {
 	header {
-		flex-direction: column;
+		flex-wrap:wrap;
+		justify-content:center;
+    	flex-grow:0;
 	}
 
 	header div:nth-child(1) {
 		margin-bottom: 20px;
+		flex-grow:0;
 	}
+
 	.skeleton-card {
 	    min-width:100%;
+	}
+	
+	header form {
+		order:3;
+	}
+
+	header div:last-child {
+		order:2;
+		margin-right:0;
+		margin-bottom:20px;
 	}
 }
 

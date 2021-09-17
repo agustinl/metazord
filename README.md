@@ -18,6 +18,8 @@
 
 - [x] GA4 Analytics Events
 
+- [ ] Check images and events. Deploy twitter image.
+
 ### Product Hunt Launch To-Do
 
 - [ ] Description

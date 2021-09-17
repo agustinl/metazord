@@ -5,7 +5,7 @@ const MetaList = ({ data }) => {
 	return (
 		<details>
 			<summary>
-				<h3>Meta list</h3>
+				<h2>Meta list</h2>
 				<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20">
@@ -21,7 +21,7 @@ const MetaList = ({ data }) => {
 						</div>
 						
 						<div>
-							<h4>{key}</h4>
+							<h3>{key}</h3>
 						</div>
 
 						<div>

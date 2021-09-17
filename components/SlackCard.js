@@ -6,7 +6,7 @@ const Slack = ({ data }) => {
 			<div>
 				<div className="card-header">
 					{/* <img src="https://img.icons8.com/color/28/000000/slack-new.png" alt="Slack Logo"/> */}
-                    <img src="/icons/slack.svg" alt="Slack Logo" />
+                    <img src="/icons/slack.svg" alt="Slack Logo" width="28" height="28" />
 
 					<h2>Slack</h2>
 
