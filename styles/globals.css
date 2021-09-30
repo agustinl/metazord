@@ -943,6 +943,12 @@ blockquote p:first-child {
 	}
 }
 
+.product-hunt-badge {
+    display:flex;
+    justify-content:flex-end;
+    padding-right:15px;
+}
+
 @media (max-width: 960px) {
 	header img {
 		max-height: 30px;

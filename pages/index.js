@@ -138,7 +138,7 @@ export default function Home({ init_meta_list, init_meta_data }) {
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:site" content="@metazord" />
 				<meta name="twitter:creator" content="@agustinlautaro" />
-				<meta name="twitter:image" content="/og-image.png" />
+				<meta name="twitter:image" content="https://www.metazord.io/og-image.png" />
 
 				<meta property="og:url" content="https://metazord.io" />
 				<meta property="og:type" content="website" />
@@ -150,7 +150,7 @@ export default function Home({ init_meta_list, init_meta_data }) {
 					property="og:description"
 					content="Get a complete information and preview of your site meta tags"
 				/>
-				<meta property="og:image" content="/og-image.png" />
+				<meta property="og:image" content="https://www.metazord.io/og-image.png" />
 				<meta
 					property="og:image:alt"
 					content="Metazord.io Preview Image"
@@ -220,6 +220,8 @@ export default function Home({ init_meta_list, init_meta_data }) {
 					</a>
 				</div>
 			</header>
+
+			<a href="https://www.producthunt.com/posts/metazord?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-metazord" target="_blank" rel="noreferrer" className="product-hunt-badge"><img src={`https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=313167&theme=${mode}`} alt="Metazord - Site meta tags information and live preview | Product Hunt" width="250" height="54" /></a>
 
 			<main>
 				<section id="cards">
