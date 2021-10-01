@@ -96,15 +96,15 @@ export default function Home({ init_meta_list, init_meta_data }) {
 				}); */
 		};
 
-		if (localStorage.metazordTheme === 'dark' || (!('metazordTheme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            theme.dispatch({ type: "dark" });
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-
 		// Prevent useEffect during initial render
 		if (initialRender.current) {
+			if (localStorage.metazordTheme === 'dark' || (!('metazordTheme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark');
+				theme.dispatch({ type: "dark" });
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+
 			initialRender.current = false;
 		} else {
 			window.dataLayer.push({
@@ -221,34 +221,34 @@ export default function Home({ init_meta_list, init_meta_data }) {
 				</div>
 			</header>
 
-			<a href="https://www.producthunt.com/posts/metazord?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-metazord" target="_blank" rel="noreferrer" className="product-hunt-badge"><img src={`https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=313167&theme=${mode}`} alt="Metazord - Site meta tags information and live preview | Product Hunt" width="250" height="54" /></a>
+			{/* <a href="https://www.producthunt.com/posts/metazord?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-metazord" target="_blank" rel="noreferrer" className="product-hunt-badge"><img src={`https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=313167&theme=${mode}`} alt="Metazord - Site meta tags information and live preview | Product Hunt" width="250" height="54" /></a> */}
 
 			<main>
-				<section id="cards">
-					{isLoading ? <Skeleton /> : null}
+				<section id="metazord">
+					{isLoading ? <Skeleton /> :  null  }
 
 					{error ? <Error /> : null}
 
 					{Object.keys(data).length > 0 ? (
 						<>
+							<div id="cards">
+								<GoogleCard data={data} />
+
+								<FacebookCard data={data} />
+
+								<TwitterCard data={data} />
+
+								<iframe style={{ marginBottom: 50 }}src="https://cards.producthunt.com/cards/posts/313167?v=1" width="500" height="405" frameBorder="0" scrolling="no" allowFullScreen></iframe>
+
+								<LinkedInCard data={data} />
+
+								<SlackCard data={data} />
+							</div>
+
 							<MetaList data={metaList} />
 
-							<GoogleCard data={data} />
-
-							<FacebookCard data={data} />
-
-							<TwitterCard data={data} />
-
-							<LinkedInCard data={data} />
-
-							<SlackCard data={data} />
-
 							<div className="disclaimer">
-								<p>
-									Card`s may be different. Representation is
-									based on an approximation of each web
-									documentation.
-								</p>
+								<p>Card&#39;s may be different. Representation is based on an approximation of each web documentation.</p>
 							</div>
 						</>
 					) : null}
@@ -323,6 +323,17 @@ export default function Home({ init_meta_list, init_meta_data }) {
 						<li>
 							<p>
 								<a
+									href="https://developers.google.com/search/blog/2021/08/update-to-generating-page-titles"
+									target="_blank"
+									rel="noreferrer">
+									An update to how we generate web page titles
+								</a>{" "}
+								&#8212; Google
+							</p>
+						</li>
+						<li>
+							<p>
+								<a
 									href="https://developers.facebook.com/docs/sharing/webmasters/"
 									target="_blank"
 									rel="noreferrer">
@@ -345,21 +356,10 @@ export default function Home({ init_meta_list, init_meta_data }) {
 						<li>
 							<p>
 								<a
-									href="https://developers.google.com/search/blog/2021/08/update-to-generating-page-titles"
-									target="_blank"
-									rel="noreferrer">
-									An update to how we generate web page titles
-								</a>{" "}
-								&#8212; Google
-							</p>
-						</li>
-						<li>
-							<p>
-								<a
 									href="https://developers.facebook.com/tools/debug/"
 									target="_blank"
 									rel="noreferrer">
-									Sharing Debugger
+									Facebook Card Validator
 								</a>{" "}
 								&#8212; Facebook
 							</p>
@@ -370,9 +370,20 @@ export default function Home({ init_meta_list, init_meta_data }) {
 									href="https://cards-dev.twitter.com/validator"
 									target="_blank"
 									rel="noreferrer">
-									Card Validator
+									Twitter Card Validator
 								</a>{" "}
 								&#8212; Twitter
+							</p>
+						</li>
+						<li>
+							<p>
+								<a
+									href="https://www.linkedin.com/post-inspector/"
+									target="_blank"
+									rel="noreferrer">
+									LinkedIn Debugger
+								</a>{" "}
+								&#8212; LinkedIn
 							</p>
 						</li>
 					</ul>

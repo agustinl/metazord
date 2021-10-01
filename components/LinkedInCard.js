@@ -13,7 +13,7 @@ const LinkedIn = ({ data }) => {
 					<hr />
 				</div>
 
-				<a href={data.url} className="linkedin-card">
+				<a href={`${data.url}?ref=metazord`} className="linkedin-card">
 					{data.image ? (
 						<div>
 							<img

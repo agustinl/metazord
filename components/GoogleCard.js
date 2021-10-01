@@ -19,7 +19,7 @@ const GoogleCard = ({ data }) => {
 
 				<div className="w-full google-card">
 					<a
-						href={data.url}
+						href={`${data.url}?ref=metazord`}
 						target="_blank"
 						rel="noreferrer"
 						className="text-tiny text-gray-800">
@@ -27,7 +27,7 @@ const GoogleCard = ({ data }) => {
 					</a>
 					<h3 className="text-xl hover:underline">
 						<a
-							href={data.url}
+							href={`${data.url}?ref=metazord`}
 							target="_blank"
 							rel="noreferrer"
 							className="text-blue-900">

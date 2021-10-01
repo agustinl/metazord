@@ -13,7 +13,7 @@ const TwitterCard = ({ data }) => {
 					<hr />
 				</div>
 
-				<a href={data.url} target="_blank" rel="noreferrer" className="twitter-card twitter-large-card">
+				<a href={`${data.url}?ref=metazord`} target="_blank" rel="noreferrer" className="twitter-card twitter-large-card">
 					{data.twitter_image || data.image ? (
 						<div>
 							<img
@@ -73,7 +73,7 @@ const TwitterCard = ({ data }) => {
 			</div>
 
 			<a
-				href={data.url}
+				href={`${data.url}?ref=metazord`}
 				target="_blank" rel="noreferrer" 
 				className="twitter-card twitter-short-card">
 				<div>

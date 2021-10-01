@@ -1,5 +1,6 @@
 {
   "name": "metazord.io",
+  "description": "Get a complete information and preview of your site meta tags",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,6 +8,21 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "keywords": [
+    "meta",
+    "tags",
+    "metazord"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agustinl/metazord"
+  },
+  "author": "Agustin Lautaro <aencaje@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://www.metazord.io/",
+  "bugs": {
+    "url": "https://github.com/agustinl/metazord/issues"
   },
   "dependencies": {
     "axios": "^0.21.1",

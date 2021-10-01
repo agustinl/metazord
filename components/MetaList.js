@@ -3,14 +3,15 @@ import XCircle from "./ui/XCircle";
 
 const MetaList = ({ data }) => {
 	return (
-		<details>
-			<summary>
-				<h2>Meta list</h2>
-				<svg
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 20 20">
-						<path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
-					</svg>
+		<details className="metalist" open>
+			<summary className="card-header">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="arrow-svg">
+					<path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+				</svg>
+
+				<h2>Meta List</h2>
+
+				<hr />
 			</summary>
 
 			<ul>
@@ -19,21 +20,13 @@ const MetaList = ({ data }) => {
 						<div>
 							{value == undefined ? <XCircle /> : <Check />}
 						</div>
-						
-						<div>
-							<h3>{key}</h3>
-						</div>
 
 						<div>
+							<h3>{key}</h3>
 							{key == "favicon" && value != undefined ? (
-								<img
-									src={value}
-									alt="Favicon"
-								/>
+								<img src={value} alt="Favicon" />
 							) : (
-								<p>
-									{value == undefined ? "-" : value}
-								</p>
+								<p>{value == undefined ? "" : value}</p>
 							)}
 						</div>
 

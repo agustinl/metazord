@@ -13,7 +13,7 @@ const FacebookCard = ({ data }) => {
 					<hr />
 				</div>
 
-				<a href={data.url} target="_blank" rel="noreferrer" className="facebook-card facebook-large-card">
+				<a href={`${data.url}?ref=metazord`} target="_blank" rel="noreferrer" className="facebook-card facebook-large-card">
 					{data.image || data.twitter_image ? (
 						<div>
 							<img
@@ -55,7 +55,7 @@ const FacebookCard = ({ data }) => {
 			</div>
 
 			<a
-				href={data.url}
+				href={`${data.url}?ref=metazord`}
 				target="_blank" rel="noreferrer"
 				className="facebook-card facebook-short-card">
 				{data.image || data.twitter_image ? (
