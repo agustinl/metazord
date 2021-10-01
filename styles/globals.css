@@ -285,6 +285,10 @@ footer a:hover {
 		"Helvetica Neue", sans-serif;
 }
 
+#cards iframe {
+    width:100%;
+}
+
 .card-header {
 	display: flex;
 	align-items: center;
