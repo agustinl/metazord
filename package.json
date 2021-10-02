@@ -2,7 +2,6 @@
   "name": "metazord.io",
   "description": "Get a complete information and preview of your site meta tags",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
