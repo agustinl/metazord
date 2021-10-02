@@ -238,7 +238,7 @@ export default function Home({ init_meta_list, init_meta_data }) {
 
 								<TwitterCard data={data} />
 
-								<iframe style={{ marginBottom: 50 }}src="https://cards.producthunt.com/cards/posts/313167?v=1" width="500" height="405" frameBorder="0" scrolling="no" allowFullScreen></iframe>
+								<iframe title="Product Hunt" style={{ marginBottom: 50 }}src="https://cards.producthunt.com/cards/posts/313167?v=1" width="500" height="405" frameBorder="0" scrolling="no" allowFullScreen></iframe>
 
 								<LinkedInCard data={data} />
 
