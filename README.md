@@ -1,25 +1,35 @@
-### Website To-Do
+<p align="center"><a href="https://www.metazord.io/"><img src="https://www.metazord.io/logo.svg" alt="metazord.io"/></a></p>
+<h1 align="center">
+    metazord.io
+</h1>
+<div align="center">Site meta tags information and live preview</div>
+<br />
+<p align="center">
+<a href="https://www.producthunt.com/posts/metazord?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-metazord" target="_blank" rel="noreferrer" className="product-hunt-badge"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=313167" alt="Metazord - Site meta tags information and live preview | Product Hunt" width="250" height="54" /></a>
+</p>
+<br />
 
-- [x] SEO information
-- [x] Footer
-- [x] Remove url and urlToShow from props
+## Live Preview Cards
 
-- [x] Remove tailwind
-- [x] ~~Colors Settings~~
-- [x] Responsive Design
+- [x] Google Search Result
+- [x] Facebook
+- [x] Twitter
+- [x] LinkedIn
+- [x] Slack
+- [ ] WhatsApp
+- [ ] Microsoft Teams
+- [ ] Discord
+## Stack
 
-- [x] metazord.io domain register
-- [x] Design
-- [x] Producthunt launch upcoming
+- React Framework: [Next.js](https://nextjs.org/)
+- Deploy: [Vercel](https://vercel.com/)
 
-- [x] Social Cards CSS VARS
-- [x] Icons Social Bad pixels on mobile
-- [x] Skeleton Responsive
+## License
 
-- [x] GA4 Analytics Events
+This project is open source and available under the [MIT License](LICENSE).
 
-- [ ] Check images and events. Deploy twitter image.
+## Author
 
-### Product Hunt Launch To-Do
+[Agustínl](https://www.agustinl.com?ref=github-sti)
 
-- [ ] Description
+##### 2021

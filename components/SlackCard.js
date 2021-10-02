@@ -29,7 +29,7 @@ const Slack = ({ data }) => {
                     </div>
 					<h3>
 						<a
-							href={data.url}
+							href={`${data.url}?ref=metazord`}
                             target="_blank"
                             rel="noreferrer" >
 							{ data.title }
