@@ -16,6 +16,7 @@ import Moon from "../components/ui/Moon";
 import Sun from "../components/ui/Sun"
 
 import { ThemeContext } from "../context/ThemeContext";
+import WhatsApp from "../components/WhatsApp";
 
 export default function Home({ init_meta_list, init_meta_data }) {
 
@@ -238,7 +239,9 @@ export default function Home({ init_meta_list, init_meta_data }) {
 
 								<TwitterCard data={data} />
 
-								<iframe title="Product Hunt" style={{ marginBottom: 50 }}src="https://cards.producthunt.com/cards/posts/313167?v=1" width="500" height="405" frameBorder="0" scrolling="no" allowFullScreen></iframe>
+								<WhatsApp data={data} />
+
+								{/* <iframe title="Product Hunt" style={{ marginBottom: 50 }}src="https://cards.producthunt.com/cards/posts/313167?v=1" width="500" height="405" frameBorder="0" scrolling="no" allowFullScreen></iframe> */}
 
 								<LinkedInCard data={data} />
 
@@ -255,6 +258,10 @@ export default function Home({ init_meta_list, init_meta_data }) {
 				</section>
 
 				<section className="faqs">
+					<a href="https://www.producthunt.com/posts/metazord?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-metazord" target="_blank" rel="noreferrer" className="product-hunt-badge">
+						<img src={`https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=313167&theme=${mode}`} alt="Metazord - Site meta tags information and live preview | Product Hunt" width="250" height="54" />
+					</a>
+
 					<h4>Why use meta tags?</h4>
 					<blockquote cite="https://developers.google.com/search/docs/advanced/crawling/special-tags">
 						<p>

@@ -47,9 +47,10 @@ const TwitterCard = ({ data }) => {
 					)}
 
 					<div className="twitter-card-info">
+						<p>{data.urlToShow}</p>
 						<h3>{data.twitter_title || data.title}</h3>
 						<p>{data.twitter_description || data.description}</p>
-						<div>
+						{/* <div>
 							<svg
 								height="21"
 								viewBox="0 0 21 21"
@@ -67,7 +68,7 @@ const TwitterCard = ({ data }) => {
 								</g>
 							</svg>
 							<p>{data.urlToShow}</p>
-						</div>
+						</div> */}
 					</div>
 				</a>
 			</div>
@@ -105,9 +106,10 @@ const TwitterCard = ({ data }) => {
 				</div>
 
 				<div className="twitter-card-info">
+					<p>{data.urlToShow}</p>
 					<h3>{data.twitter_title || data.title}</h3>
 					<p>{data.twitter_description || data.description}</p>
-					<div>
+					{/* <div>
 						<svg
 							height="21"
 							viewBox="0 0 21 21"
@@ -125,7 +127,7 @@ const TwitterCard = ({ data }) => {
 							</g>
 						</svg>
 						<p>{data.urlToShow}</p>
-					</div>
+					</div> */}
 				</div>
 			</a>
 		</Card>

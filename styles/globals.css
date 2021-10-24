@@ -25,13 +25,23 @@
 	--twitter-color-primary: #0f1419;
 	--twitter-color-secondary: #536471;
 
+	--whatsapp-background-main: #dcf8c6;
+	--whatsapp-background-secondary: #d3eebe;
+	--whatsapp-title-color: rgb(0 0 0 / 87%);
+	--whatsapp-paragraph-color: rgb(0 0 0 / 60%);
+	--whatsapp-url-color: rgb(0 0 0 / 30%);
+	--whatsapp-href-color: #039be5;
+	--whatsapp-time-color: rgba(0, 0, 0, 0.50);
+	--whatsapp-svg-stroke: rgba(0, 0, 0, 0.30);
+
 	--linkedin-bg: #eef3f8;
 	--linkedin-border: #ebebeb;
 	--linkedin-color-primary: #181819;
 	--linkedin-color-secondary: #5f6163;
 
-	--slack-color-primary: #1e3a8a;
+	--slack-color-primary: #2e5d8b;
 	--slack-color-secondary: #000;
+	--slack-color-border: #dddddd;
 
 	--google-link-color: #202124;
 	--google-title-color: #1a0dab;
@@ -64,6 +74,15 @@
 	--twitter-color-primary: #d9d9d9;
 	--twitter-color-secondary: #6e767d;
 
+	--whatsapp-background-main: #066162;
+	--whatsapp-background-secondary: #065051;
+	--whatsapp-title-color: rgb(241 241 242 / 87%);
+	--whatsapp-paragraph-color: rgb(241 241 242 / 60%);
+	--whatsapp-url-color: rgb(241 241 242 / 30%);
+	--whatsapp-href-color: rgb(104, 187, 228);
+	--whatsapp-time-color: rgba(255,255,255, 0.50);
+	--whatsapp-svg-stroke: rgba(255,255,255, 0.30);
+
 	--linkedin-bg: #384351;
 	--linkedin-border: #2f3336;
 	--linkedin-color-primary: #d4dfeb;
@@ -71,6 +90,7 @@
 
 	--slack-color-primary: #d1d2d3;
 	--slack-color-secondary: #9a9c9e;
+	--slack-color-border: #dddddd;
 
 	--google-link-color: #bdc1c6;
 	--google-title-color: #8ab4f8;
@@ -657,6 +677,109 @@ summary.card-header {
 	padding: 0 15px;
 }
 
+/* WhatsApp Card */
+
+.whatsapp-card {
+    display:flex;
+    background:var(--whatsapp-background-main);
+    border-radius:8px;
+    padding:3px;
+    margin: 20px 0;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.13);
+    position:relative;
+    flex-wrap:wrap;
+}
+
+.whatsapp-card div:first-child {
+    min-width: 90px;
+    overflow: hidden;
+    position: relative;
+    height: 90px;
+    background: var(--body-bg);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.whatsapp-card img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.whatsapp-card-info {
+    background:var(--whatsapp-background-secondary);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding:5px 10px;
+    width:100%;
+    flex-basis: calc(100% - 90px);
+}
+
+.whatsapp-card-bottom {
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    flex-grow:1;
+}
+
+.whatsapp-card-bottom span {	
+    font-size:0.688rem;
+    margin-right:5px;
+    color:var(--whatsapp-time-color);
+    display:flex;
+    align-items:center;
+}
+
+.whatsapp-card-bottom svg {
+    stroke:var(--whatsapp-svg-stroke);
+	margin-left:3px;
+}
+
+.whatsapp-card-info h3 {
+    font-size:0.875rem;
+    font-weight:400;
+    margin:0;
+	color:var(--whatsapp-title-color);
+}
+
+.whatsapp-card-info p {
+    font-size:0.813rem;
+    margin:0;
+    color:var(--whatsapp-paragraph-color);
+}
+
+.whatsapp-card-info p:last-child {
+    font-size:0.75rem;
+    color:var(--whatsapp-url-color);
+}
+
+.whatsapp-link {
+    margin:5px 0 5px 5px;
+    color:var(--whatsapp-href-color);
+    font-size:0.875rem;    
+}
+
+.whatsapp-link:hover {    
+    text-decoration:underline;
+}
+
+.whatsapp-arrow {
+    position:absolute;
+    width: 0; 
+    height: 0;
+    right:-10px;
+    top:0;
+    z-index:9999;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+  
+    border-top: 10px solid var(--whatsapp-background-main);
+}
+
 /* LinkedIn Card */
 
 .linkedin-card {
@@ -714,7 +837,7 @@ summary.card-header {
 	display: flex;
 	flex-direction: column;
 	margin: 20px 0;
-	border-left: solid 5px var(--gray-4);
+	border-left: solid 4px var(--slack-color-border);
 	padding-left: 15px;
 }
 
@@ -732,12 +855,13 @@ summary.card-header {
 	font-size: 0.875rem;
 	margin: 0;
 	color: var(--slack-color-secondary);
+	font-weight:600;
 }
 
 .slack-card .slack-card-img-preview img {
 	object-fit: cover;
-	max-height: 200px;
-	border-radius: 8px;
+	max-height: 190px;
+	border-radius: 4px;
 	border: solid 1px var(--gray-4);
 }
 
@@ -767,7 +891,8 @@ summary.card-header {
 }
 
 .google-card p,
-.twitter-card p {
+.twitter-card p,
+.whatsapp-card-info p {
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;

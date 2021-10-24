@@ -16,7 +16,7 @@
 - [x] Twitter
 - [x] LinkedIn
 - [x] Slack
-- [ ] WhatsApp
+- [x] WhatsApp
 - [ ] Microsoft Teams
 - [ ] Discord
 ## Stack
@@ -30,6 +30,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Author
 
-[Agustínl](https://www.agustinl.com?ref=github-sti)
+[Agustínl](https://www.agustinl.com?ref=gh-metazord)
 
 ##### 2021
